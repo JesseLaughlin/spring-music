@@ -49,6 +49,9 @@ repositories {
 }
 
 dependencies {
+    // New Relic API
+    compile "com.newrelic.agent.java:newrelic-api:3.5.1"
+
     // Spring and dependencies
     compile "org.springframework:spring-context:${springVersion}"
     compile "org.springframework:spring-webmvc:${springVersion}"
@@ -94,6 +97,7 @@ dependencies {
            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
     tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
         exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+
     }
 }
 
