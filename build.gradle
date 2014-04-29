@@ -52,6 +52,11 @@ dependencies {
     // New Relic API
     compile "com.newrelic.agent.java:newrelic-api:3.5.1"
 
+    // Http Client
+    compile 'org.apache.httpcomponents:httpclient:4.1.1'
+
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'     
+
     // Spring and dependencies
     compile "org.springframework:spring-context:${springVersion}"
     compile "org.springframework:spring-webmvc:${springVersion}"

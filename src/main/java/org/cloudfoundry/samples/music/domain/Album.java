@@ -1,18 +1,18 @@
 package org.cloudfoundry.samples.music.domain;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Album {
     @Id
-    @Column(length=40)
-    @GeneratedValue(generator="randomId")
-    @GenericGenerator(name="randomId", strategy="org.cloudfoundry.samples.music.domain.RandomIdGenerator")
+    @Column(length = 40)
+    @GeneratedValue(generator = "randomId")
+    @GenericGenerator(name = "randomId", strategy = "org.cloudfoundry.samples.music.domain.RandomIdGenerator")
     private String id;
 
     private String title;
@@ -21,6 +21,7 @@ public class Album {
     private String genre;
     private int trackCount;
     private String albumId;
+    private String songs;
 
     public Album() {
     }
@@ -87,4 +88,23 @@ public class Album {
     public void setAlbumId(String albumId) {
         this.albumId = albumId;
     }
+
+    /**
+     * Gets the field songs.
+     * 
+     * @return the songs
+     */
+    public String getSongs() {
+        return songs;
+    }
+
+    /**
+     * Sets the field songs.
+     * 
+     * @param songs the songs to set
+     */
+    public void setSongs(String songs) {
+        this.songs = songs;
+    }
+
 }

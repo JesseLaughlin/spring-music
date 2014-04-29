@@ -3,8 +3,9 @@ angular.module('albums', ['ngResource', 'ui.bootstrap']).
         return $resource('albums');
     }).
     factory('Album', function ($resource) {
-        return $resource('albums/:id', {id: '@id'});
+        return $resource('albums/:id', {id: '@id'}, {getSongs: {method: 'GET', url: 'albums/getsongs/:id'}});
     }).
+    
     factory("EditorStatus", function () {
         var editorEnabled = {};
 
@@ -89,11 +90,23 @@ function AlbumsController($scope, $modal, Albums, Album, Status) {
     $scope.deleteAlbum = function (album) {
         Album.delete({id: album.id},
             function () {
-                Status.success("Album deleted");
+                Status.success("Album deleted"); 
                 list();
             },
             function (result) {
                 Status.error("Error deleting album: " + result.status);
+            }
+        );
+    };
+    
+    $scope.getSongs = function (album) {
+        var theAlbum = Album.getSongs({id: album.id},
+            function () {
+                Status.success(theAlbum.songs);
+                list();
+            },
+            function (result) {
+                Status.error("Error geting songs for album: " + result.status);
             }
         );
     };
